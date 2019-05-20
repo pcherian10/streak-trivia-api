@@ -3,7 +3,6 @@ class CreateAttempts < ActiveRecord::Migration[5.2]
     create_table :attempts do |t|
       t.integer :answer
       t.integer :right_answer
-
       t.timestamps
     end
   end

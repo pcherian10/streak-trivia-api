@@ -1,6 +1,6 @@
 class Api::V2::QuestionsController < ApplicationController
 
-    before_action :set_user, only:[:create, :update, :destroy]
+    before_action :set_user, only:[:create, :update, :destroy, :show]
   
     def index
       @questions = Question.all.sort_by{|q| q.id}
@@ -8,12 +8,15 @@ class Api::V2::QuestionsController < ApplicationController
     end
   
     def show
-      @question = Question.find(params[:id])
-      render json: @question
+      @question = Question.select_question(user)
+      if @question
+        render json: @question
+      else 
+        render json: {message: 'All questions have been attempted!'}
     end
   
     def create
-      @question = @user.questions.build(question_params)
+      @question = Question.new(question_params)
       if @question.valid?
         @question.save
         render json: @question
