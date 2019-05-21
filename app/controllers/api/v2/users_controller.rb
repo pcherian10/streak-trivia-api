@@ -48,7 +48,7 @@ class Api::V2::UsersController < ApplicationController
       .permit(
         :username,
         :email,
-        :password_digest
+        :password
       )
     end
   
