@@ -18,6 +18,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'active_model_serializers', '~> 0.10.2'
 
+gem 'pry', '~> 0.12.2'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

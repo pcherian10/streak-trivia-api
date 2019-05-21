@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :questions
+  has_many :attempts
   has_many :questions, through: :attempts 
   has_many :streaks
   

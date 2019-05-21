@@ -1,18 +1,23 @@
 class Api::V2::QuestionsController < ApplicationController
 
-    before_action :set_user, only:[:create, :update, :destroy, :show]
-  
-    def index
-      @questions = Question.all.sort_by{|q| q.id}
-      render json: @questions
-    end
-  
-    def show
-      @question = Question.select_question(user)
+    before_action :set_user, only:[:create, :show, :update, :destroy, :question]
+
+    def question #custom method created to return one question that meets specific criteria.
+      @question = Question.select_question(@user)
       if @question
         render json: @question
       else 
         render json: {message: 'All questions have been attempted!'}
+      end   
+    end
+
+  
+    def show
+      if @question
+        render json: @question
+      else 
+        render json: {message: 'All questions have been attempted!'}
+      end
     end
   
     def create
@@ -50,9 +55,15 @@ class Api::V2::QuestionsController < ApplicationController
     end
   
     def question_params
-      params.require(:question).permit(:author_id, :question, :first_choice, :second_choice,
-        :third_choice, :correct_answer)
+      params.require(:question)
+        .permit(
+          :author_id, 
+          :question, 
+          :first_choice, 
+          :second_choice,
+          :third_choice, 
+          :correct_answer)
     end
   
-  
+
   end
