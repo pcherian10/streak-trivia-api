@@ -2,6 +2,10 @@ class Api::V2::AttemptsController < ApplicationController
 
     def create
         @attempt = Attempt.new(attempt_params)
+        if(@attempt.right_answer == nil)
+            @attempt.right_answer = @attempt.question.correct_answer == @attempt.answer ? 1 : 0;
+            binding.pry
+        end
         if @attempt.valid?
             @attempt.save
         else
@@ -9,6 +13,7 @@ class Api::V2::AttemptsController < ApplicationController
         end
     end
 
+    private
 
     def attempt_params
         params.require(:attempt)

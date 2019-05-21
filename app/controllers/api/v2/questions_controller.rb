@@ -1,6 +1,10 @@
 class Api::V2::QuestionsController < ApplicationController
 
-    before_action :set_user, only:[:create, :show, :update, :destroy, :question]
+    before_action :set_user, only:[:index, :create, :question, :destroy]
+
+    def index
+
+    end
 
     def question #custom method created to return one question that meets specific criteria.
       @question = Question.select_question(@user)
@@ -9,15 +13,6 @@ class Api::V2::QuestionsController < ApplicationController
       else 
         render json: {message: 'All questions have been attempted!'}
       end   
-    end
-
-  
-    def show
-      if @question
-        render json: @question
-      else 
-        render json: {message: 'All questions have been attempted!'}
-      end
     end
   
     def create

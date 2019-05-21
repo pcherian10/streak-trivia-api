@@ -7,14 +7,10 @@ class Question < ApplicationRecord
                 # a) that's not created by the user
                 # b) that's not attempted by the user 
                     # check if any attempt has both user and question
-        
-        if user.attempts.to_a.length > 0
-            question = self.all.find { |q| !user.attempts.questions.include?(q) && q.author_id != user.id } 
-        else
-            question = self.all.find { |q| q.author_id != user.id } 
-        end
-        question
+        self.all.find { |q| !user.questions.include?(q) && q.author_id != user.id } 
     end
+
+    
 
 
 end
