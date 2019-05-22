@@ -3,13 +3,14 @@ class Api::V2::QuestionsController < ApplicationController
     before_action :set_user, only:[:index, :create, :question, :destroy]
 
     def index
-
+      @questions = Question.all.select{ |q| q.author_id == @user.id}
+      render json: @questions
     end
 
     def question #custom method created to return one question that meets specific criteria.
       @question = Question.select_question(@user)
       if @question
-        render json: @question
+        render json: { question: @question.question, first_choice: @question.first_choice, second_choice: @question.second_choice, third_choice: @question.third_choice }
       else 
         render json: {message: 'All questions have been attempted!'}
       end   
