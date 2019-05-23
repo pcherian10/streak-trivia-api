@@ -15,7 +15,7 @@ class Api::V2::AuthController < ApplicationController
       if user
         render json: user
       else
-        render({json: {error: 'Invalid token'}, status: 401})
+        render json: {error: 'Invalid token'}, status: 401
       end
     end
   

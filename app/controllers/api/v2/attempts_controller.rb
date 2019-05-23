@@ -4,7 +4,6 @@ class Api::V2::AttemptsController < ApplicationController
         @attempt = Attempt.new(attempt_params)
         if(@attempt.right_answer == nil)
             @attempt.right_answer = @attempt.question.correct_answer == @attempt.answer ? 1 : 0;
-            binding.pry
         end
         if @attempt.valid?
             @attempt.save
