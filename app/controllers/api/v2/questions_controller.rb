@@ -10,7 +10,7 @@ class Api::V2::QuestionsController < ApplicationController
     def question #custom method created to return one question that meets specific criteria.
       @question = Question.select_question(@user)
       if @question
-        render json: { question: @question.question, first_choice: @question.first_choice, second_choice: @question.second_choice, third_choice: @question.third_choice }
+        render json: {id: @question.id, question: @question.question, first_choice: @question.first_choice, second_choice: @question.second_choice, third_choice: @question.third_choice }
       else 
         render json: {message: 'All questions have been attempted!'}
       end   

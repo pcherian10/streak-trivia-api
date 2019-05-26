@@ -130,7 +130,7 @@ question_list =[
     first_choice: "Val Kilmer",
     second_choice: "Christian Bale",
     third_choice: "Michael Keaton",
-    correct_answer: 2},
+    correct_answer: 3},
   {question:"In which film did Marilyn Monroe portray a ukulele player?",
     author_id: 6,
     first_choice: "Some Like It Hot",
