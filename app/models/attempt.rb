@@ -12,8 +12,10 @@ class Attempt < ApplicationRecord
         #and count the number of the right_answer column in a row, until there's not a 4 as value
         attempts_array.reverse.each_with_index do |att, idx|
                 if att.right_answer == 4
-                    if attempts_array[idx + 1].right_answer && attempts_array[idx + 1].right_answer == 4
+                    if attempts_array[idx + 1] && attempts_array[idx + 1].right_answer == 4
                         streak_count += 1
+                    elsif idx == attempts_array.length - 1
+                        return streak_count + 1;
                     end
                 else
                     return streak_count
