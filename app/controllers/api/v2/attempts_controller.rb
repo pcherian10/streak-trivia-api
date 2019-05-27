@@ -18,6 +18,7 @@ class Api::V2::AttemptsController < ApplicationController
             @streak = Streak.new(user_id: params[:user_id], date: date, streak_count: streak_count)
             
             if @streak.valid?
+                puts @streak
                 @streak.save
             end  
 
