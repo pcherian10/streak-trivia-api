@@ -14,11 +14,12 @@ class Api::V2::AttemptsController < ApplicationController
             @attempt.save
 
             streak_count = Attempt.current_streak(@user)
+            puts "streak_count: #{streak_count}"
             date = Time.now.strftime("%d/%m/%Y %H:%M")
             @streak = Streak.new(user_id: params[:user_id], date: date, streak_count: streak_count)
             
             if @streak.valid?
-                puts @streak
+                puts "streak is valid: #{@streak}"
                 @streak.save
             end  
 
