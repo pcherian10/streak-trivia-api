@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  longest_streak: 1
+  correct_overall: 1
+  incorrect_overall: 1
+
+two:
+  longest_streak: 1
+  correct_overall: 1
+  incorrect_overall: 1
