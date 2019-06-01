@@ -8,6 +8,7 @@ Rails.application.routes.draw do
             resources :questions, only: [:index, :show, :create, :destroy]
             resources :attempts, only: [:create, :index, :show]
             resources :streaks, only: [:create, :update, :show, :index]
+            resources :stats
           end
           post '/auth', to: 'auth#create'
           get '/current_user', to: 'auth#show'

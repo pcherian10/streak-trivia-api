@@ -2,10 +2,11 @@ class Streak < ApplicationRecord
     belongs_to :user
 
     def self.longest_streak
-        return Streak.
+        return Streak.all.sort_by { |s| s.streak_count}.last
     end
 
-    def top_five_streaks
+    def self.top_five_streaks
+        
 
     end
 
