@@ -21,7 +21,13 @@ class Api::V2::AttemptsController < ApplicationController
             if @streak.valid?
                 puts "streak is valid: #{@streak}"
                 @streak.save
-            end  
+            end 
+
+            Streak.
+            
+            
+
+            
 
             render json: { 'correct_answer': @attempt.right_answer, 'current_streak': @streak.streak_count}
         else
