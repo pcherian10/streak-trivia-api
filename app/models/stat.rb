@@ -21,12 +21,12 @@ class Stat < ApplicationRecord
         ranking = Stat.user_ranking(longest_streak)
 
         if !user.stat
-            @stat = Stat.new(user_id: user.id, longest_streak: longest_streak, correct_overall: correct_overall, incorrect_overall: incorrect_overall, ranking: ranking)
+            @stat = Stat.new(user_id: user.id, longest_streak: longest_streak.streak_count, correct_overall: correct_overall, incorrect_overall: incorrect_overall, ranking: ranking)
             if @stat.valid?
                 @stat.save
             end
         else
-            user.stat.update_attributes(longest_streak: longest_streak, correct_overall: correct_overall, incorrect_overall: incorrect_overall, ranking: ranking)   
+            user.stat.update_attributes(longest_streak: longest_streak.streak_count, correct_overall: correct_overall, incorrect_overall: incorrect_overall, ranking: ranking)   
         end
 
     end

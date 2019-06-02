@@ -4,7 +4,7 @@ class Api::V2::StatsController < ApplicationController
 
     def index
        @stats = Stat.all.sort_by{ |s| s.ranking }.reverse
-       render json: @stats
+       render json: @stats 
     end            
   
     def show
