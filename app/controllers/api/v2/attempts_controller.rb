@@ -12,17 +12,14 @@ class Api::V2::AttemptsController < ApplicationController
 
         if @attempt.valid?
             @attempt.save
-
             streak_count = Attempt.current_streak(@user)
             puts "streak_count: #{streak_count}"
             date = Time.now.strftime("%d/%m/%Y %H:%M")
             @streak = Streak.new(user_id: params[:user_id], date: date, streak_count: streak_count)
-            
             if @streak.valid?
                 puts "streak is valid: #{@streak}"
                 @streak.save
             end 
-
             Stat.create_or_update_user_stat_entry(@user)
             
             render json: { 'correct_answer': @attempt.right_answer, 'current_streak': @streak.streak_count}
