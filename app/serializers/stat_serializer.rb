@@ -1,2 +1,2 @@
 class StatSerializer < ActiveModel::Serializer
-  attributes :id, :longest_streak, :user_longest_streak, :correct_answer, :incorrect_answer, :ranking
+  attributes :id, :longest_streak, :correct_overall, :incorrect_overall, :ranking

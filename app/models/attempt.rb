@@ -27,16 +27,6 @@ class Attempt < ApplicationRecord
         puts "STREAK_COUNT AT END OF METHOD"
         streak_count
     end
-
-    def self.correct_overrall
-
-    end
-
-
-    def self.incorrect_overrall
-
-    end
-
     
 
 end
