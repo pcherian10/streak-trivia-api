@@ -23,7 +23,8 @@ class Api::V2::AttemptsController < ApplicationController
                 @streak.save
             end 
 
-            #@longest_streak = Streak.longest_streak
+            @user.stat.update
+
             render json: { 'correct_answer': @attempt.right_answer, 'current_streak': @streak.streak_count}
         else
             render json: { 'error': "Something went wrong"}

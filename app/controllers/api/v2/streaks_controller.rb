@@ -13,7 +13,7 @@ class Api::V2::StreaksController < ApplicationController
     end
 
     def index
-        @streaks = @user.streaks.reverse()  
+        @streaks = @user.streaks 
     end
 
     private
@@ -29,7 +29,6 @@ class Api::V2::StreaksController < ApplicationController
             :streak_count,
             :date
         )
-
     end
 
 
