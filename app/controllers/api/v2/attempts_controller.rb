@@ -12,6 +12,7 @@ class Api::V2::AttemptsController < ApplicationController
 
         if @attempt.valid?
             @attempt.save
+            
             streak_count = Attempt.current_streak(@user)
             puts "streak_count: #{streak_count}"
             date = Time.now.strftime("%d/%m/%Y %H:%M")
