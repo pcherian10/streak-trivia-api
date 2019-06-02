@@ -10,7 +10,7 @@ Rails.application.routes.draw do
             resources :attempts, only: [:create, :index, :show]
             resources :streaks, only: [:create, :update, :show, :index]
           end
-          resources :stats, :only: [:index]  
+          resources :stats, only: [:index]  
           post '/auth', to: 'auth#create'
           get '/current_user', to: 'auth#show'
         end
