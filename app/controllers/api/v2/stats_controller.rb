@@ -3,6 +3,9 @@ class Api::V2::StatsController < ApplicationController
     before_action :set_user, only:[:index, :destroy, :show]
 
     def index
+        User.all.each |do|
+          Stat.create_or_update_user_entry(user)
+        end
        @stats = Stat.all.sort_by{ |s| s.ranking }
        render json: @stats 
     end            
